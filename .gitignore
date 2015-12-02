@@ -1,0 +1,4 @@
+clib.h
+libclib.a
+test
+test.o
