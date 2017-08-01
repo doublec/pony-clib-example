@@ -8,7 +8,7 @@ libclib.a clib.h: clib/main.pony
 	ponyc -l clib
 
 test: test.c clib.h libclib.a
-	gcc -o test -I. -I $(PONYRT_INCLUDE) -I $(PONYRT_COMMON) -g -mcx16 test.c libclib.a $(PONYRT_LIB) -lpthread -ldl
+	gcc -rdynamic -o test -I. -I $(PONYRT_INCLUDE) -I $(PONYRT_COMMON) -g -mcx16 test.c libclib.a $(PONYRT_LIB) -lpthread -ldl
 
 clean:
 	-rm -f libclib.a
