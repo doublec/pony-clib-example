@@ -24,9 +24,9 @@ definitions to create and call the behaviours in the actor:
     /* Allocate a Foo without initialising it. */
     Foo* Foo_Alloc();
     
-    Foo* Foo_hi__send(Foo* self);
+    None* Foo_tag_hi_o__send(Foo* self);
     
-    Foo* Foo_create__send(Foo* self);
+    Foo* Foo_tag_create_o__send(Foo* self);
 
 The [ponyc](https://github.com/CausalityLtd/ponyc) compiler source has
 a header file, [pony.h](https://github.com/CausalityLtd/ponyc/blob/master/src/libponyrt/pony.h) with
@@ -36,9 +36,10 @@ approach is to initialize the runtime, create some actors and call methods, then
     int main(int argc, char** argv) {
       pony_init(argc, argv);
       Foo* x = Foo_Alloc();
+      Foo_tag_hi_o__send(x);
+      Foo_tag_create_o__send(x);
       Foo_create__send(x);
-      Foo_hi__send(x);
-      pony_start(0);
+      pony_start(true, true);
       return 0;
     }
 
