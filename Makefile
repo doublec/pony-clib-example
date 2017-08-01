@@ -8,3 +8,8 @@ libclib.a clib.h: clib/main.pony
 
 test: test.c clib.h libclib.a
 	gcc -o test -I. -I $(PONYRT_INCLUDE) -g -mcx16 test.c libclib.a $(PONYRT_LIB) -lpthread -ldl
+
+clean:
+	-rm -f libclib.a
+	-rm -f clib.h
+	-rm -f test
